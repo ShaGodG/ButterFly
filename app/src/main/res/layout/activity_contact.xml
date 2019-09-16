@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ContactActivity">
+    <TextView
+        android:text="About"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+    <TextView
+
+        android:text="The butterfly Corner Pattaya welcome you to join us on special tour with many species of butterflies flying around you."
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Address"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+    <TextView
+
+        android:text="The Butterfly Corner Pattaya Co.,Ltd. Nong Pla Lai."
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+
+        android:text="+66926199662"
+        android:inputType="phone"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+
+        android:text="contact@butterflycorner.world"
+        android:inputType="textEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+
+        android:text="https://the-butterfly-corner-pattaya-coltd.business.site"
+        android:inputType="textEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

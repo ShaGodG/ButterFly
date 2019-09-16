@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">The Butterfly Corner</string>
+    <string name="title_activity_log_in">Log in</string>
+    <string name="title_activity_sign__up">Sign Up</string>
+    <string name="title_activity_contact_us">Contact Us</string>
+    <string name="title_activity_contact__us">Contact Us</string>
+    <string name="title_activity_about__us">About Us</string>
+    <string name="title_activity_butterfly_db">Butterflies</string>
+    <string name="title_activity_acraea_violae">Acraea Violae</string>
+    <string name="title_activity_cethosia_cyane">Cethosia Cyane</string>
+    <string name="title_activity_danaus__chrysippus">Danaus Chrysippus</string>
+    <string name="title_activity_graphium__agamemnon">Graphium Agamemnon</string>
+    <string name="title_activity_hypolimnas_bolina">Hypolimnas Bolina</string>
+    <string name="title_activity_pachliopta_aristolochiae">Pachliopta Aristolochiae</string>
+    <string name="title_activity_papilio_demoleus">Papilio Demoleus</string>
+    <string name="title_activity_papilio_memnon">Papilio Memnon</string>
+    <string name="title_activity_parthenos_slyvia">Parthenos Slyvia</string>
+    <string name="title_activity_number_of_players">Number Of Players</string>
+    <string name="title_activity_itempage">Menu</string>
+    <string name="title_activity_capture_butterfly">Capture Butterfly</string>
+    <string name="preview_description">Image preview will appear here</string>
+    <string name="btn_take_picture">Take Picture</string>
+    <string name="btn_confirm_picture">Confirm Picture</string>
+</resources>
