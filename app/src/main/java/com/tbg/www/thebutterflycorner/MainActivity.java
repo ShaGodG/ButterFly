@@ -2,6 +2,7 @@ package com.tbg.www.thebutterflycorner;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.i("Bhenchod", String.valueOf(FirebaseAuth.getInstance().getCurrentUser().getEmail()));
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         CardView Butterfly = findViewById(R.id.butterflydb);
