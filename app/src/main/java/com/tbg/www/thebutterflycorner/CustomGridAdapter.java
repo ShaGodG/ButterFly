@@ -10,15 +10,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class CustomGridAdapter extends BaseAdapter {
 
     private Context mContext;
     Dialog myDialog;
-    private final String[] gridViewString;
-    private final int[] gridViewImageId;
-    String[] gridDesc;
+    ArrayList<String> gridViewString;
+    ArrayList<Integer> gridViewImageId;
+    ArrayList<String> gridDesc;
 
-    public CustomGridAdapter(Context context, String[] gridViewString, int[] gridViewImageId,String [] gridDesc) {
+    public CustomGridAdapter(Context context, ArrayList<String>gridViewString, ArrayList<Integer>gridViewImageId,ArrayList<String> gridDesc) {
         mContext = context;
         this.gridViewImageId = gridViewImageId;
         this.gridViewString = gridViewString;
@@ -28,7 +30,7 @@ public class CustomGridAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return gridViewString.length;
+        return gridViewString.size();
     }
 
     @Override
@@ -54,22 +56,20 @@ public class CustomGridAdapter extends BaseAdapter {
             gridViewAndroid = new View(mContext);
             gridViewAndroid = inflater.inflate(R.layout.grid_layout, null);
 
-            final LinearLayout ll= gridViewAndroid.findViewById(R.id.android_custom_gridview_layout);
+
 
 
 
             TextView textViewAndroid = (TextView) gridViewAndroid.findViewById(R.id.android_gridview_text);
             ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.android_gridview_image);
-            textViewAndroid.setText(gridViewString[i]);
-            imageViewAndroid.setImageResource(gridViewImageId[i]);
+            textViewAndroid.setText(gridViewString.get(i));
+            imageViewAndroid.setImageResource(gridViewImageId.get(i));
            /* ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     myDialog = new Dialog(mContext);
-                    myDialog.setContentView(R.layout.desc_dialog);
-                    myDialog.setCanceledOnTouchOutside(true);
-                    myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
 
 
                     TextView  dialogName= v.findViewById(R.id.dialog_name);
