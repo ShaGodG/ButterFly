@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".ContactActivity">
     <TextView
-        android:text="About"
+        android:text="@string/about"
         android:textSize="26sp"
         android:textStyle="bold"
         android:layout_margin="10dp"
@@ -17,13 +17,13 @@
         />
     <TextView
 
-        android:text="The butterfly Corner Pattaya welcome you to join us on special tour with many species of butterflies flying around you."
+        android:text="@string/the_butterfly_corner_pattaya_welcome_you_to_join_us_on_special_tour_with_many_species_of_butterflies_flying_around_you"
         android:layout_width="wrap_content"
         android:layout_margin="10dp"
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:text="Address"
+        android:text="@string/address"
         android:textStyle="bold"
         android:textSize="26sp"
         android:layout_margin="10dp"
@@ -33,14 +33,14 @@
         />
     <TextView
 
-        android:text="The Butterfly Corner Pattaya Co.,Ltd. Nong Pla Lai."
+        android:text="@string/the_butterfly_corner_pattaya_co_ltd_nong_pla_lai"
         android:layout_width="wrap_content"
         android:layout_margin="10dp"
         android:layout_height="wrap_content"/>
 
     <TextView
 
-        android:text="+66926199662"
+        android:text="@string/_66926199662"
         android:inputType="phone"
         android:layout_width="wrap_content"
         android:layout_margin="10dp"
@@ -48,7 +48,7 @@
 
     <TextView
 
-        android:text="contact@butterflycorner.world"
+        android:text="@string/contact_butterflycorner_world"
         android:inputType="textEmailAddress"
         android:layout_width="wrap_content"
         android:layout_margin="10dp"
@@ -56,7 +56,7 @@
 
     <TextView
 
-        android:text="https://the-butterfly-corner-pattaya-coltd.business.site"
+        android:text="@string/https_the_butterfly_corner_pattaya_coltd_business_site"
         android:inputType="textEmailAddress"
         android:layout_width="wrap_content"
         android:layout_margin="10dp"

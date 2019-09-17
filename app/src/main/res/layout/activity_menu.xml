@@ -35,7 +35,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Menu Card Images will appear here"
+        android:text="@string/menu_card_images_will_appear_here"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -20,7 +20,7 @@
 
         <TextView
             android:id="@+id/text"
-            android:text="The Butterfly Corner"
+            android:text="@string/the_butterfly_corner"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
         <TextView
             android:layout_below="@+id/text"
             android:id="@+id/textViewGame"
-            android:text="Play and win Coupons"
+            android:text="@string/play_and_win_coupons"
             android:gravity="center"
             android:layout_marginTop="22dp"
             android:textColor="#FFFFFF"
@@ -111,97 +111,14 @@
                         android:textColor="#6F6F6F"
                         android:textSize="18sp"
                         android:gravity="center"
-                        android:text="Butterflies"
+                        android:text="@string/butterflies"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"/>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-           <!-- <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="8dp"
-                android:padding="20dp"
-                app:cardCornerRadius="8dp"
-                android:layout_margin="12dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:id="@+id/playbtn"
-                >
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-
-                    <ImageView
-                        android:id="@+id/playImg"
-                        android:src="@drawable/play"
-                        android:layout_width="80dp"
-                        android:layout_gravity="center"
-                        android:layout_height="80dp"/>
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6F6F6F"
-                        android:textSize="18sp"
-                        android:gravity="center"
-                        android:text="Play"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"/>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
--->
-
-
-           <!-- <androidx.cardview.widget.CardView
-                android:id="@+id/signUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="12dp"
-                android:clickable="true"
-                android:focusable="true"
-                >
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-
-                    <ImageView
-                        android:src="@drawable/signup"
-                        android:layout_width="80dp"
-                        android:layout_gravity="center"
-                        android:layout_height="80dp"/>
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6F6F6F"
-                        android:textSize="18sp"
-                        android:text="Sign up"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"/>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/menuBtn"
                 android:layout_width="wrap_content"
@@ -235,7 +152,7 @@
                         android:textColor="#6F6F6F"
                         android:textSize="18sp"
                         android:gravity="center"
-                        android:text="Menu"
+                        android:text="@string/menu"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"/>
 
@@ -274,7 +191,7 @@
                         android:layout_marginTop="12dp"
                         android:textColor="#6F6F6F"
                         android:textSize="18sp"
-                        android:text="Contact Us"
+                        android:text="@string/contact_us"
                         android:gravity="center"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"/>
@@ -314,7 +231,7 @@
                         android:layout_marginTop="12dp"
                         android:textColor="#6F6F6F"
                         android:textSize="18sp"
-                        android:text="Coupons"
+                        android:text="@string/coupons"
                         android:gravity="center"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"/>
