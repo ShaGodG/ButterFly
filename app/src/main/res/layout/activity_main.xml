@@ -118,7 +118,7 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
+           <!-- <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -159,7 +159,7 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
+-->
 
 
            <!-- <androidx.cardview.widget.CardView
@@ -321,12 +321,14 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-
-
-
         </GridLayout>
     </LinearLayout>
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/playbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/play" />
 
 </LinearLayout>
