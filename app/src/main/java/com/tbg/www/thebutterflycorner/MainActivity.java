@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     Animation fromBottom;
     TextView textView1,textView2;
+    FloatingActionButton Play;
+
     private static final int RC_SIGN_IN = 123;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +29,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         CardView Butterfly = findViewById(R.id.butterflydb);
-        FloatingActionButton Play = findViewById(R.id.playbtn);
+        Play = findViewById(R.id.playbtn);
        // CardView SignUp = findViewById(R.id.signUp);
         CardView menu = findViewById(R.id.menuBtn);
         textView1=findViewById(R.id.text);
         textView2=findViewById(R.id.textViewGame);
+
         CardView couponBtn =  findViewById(R.id.couponbtn);
         CardView contactUs = findViewById(R.id.contactBtn);
         fromBottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
