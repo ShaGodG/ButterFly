@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         CardView contactUs = findViewById(R.id.contactBtn);
         fromBottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
         textView1.animate().translationY(50).setDuration(800).setStartDelay(300);
-        textView2.animate().translationY(60).setDuration(800).setStartDelay(300);
+        textView2.animate().translationY(50).setDuration(800).setStartDelay(300);
         Butterfly.setAnimation(fromBottom);
         Play.setAnimation(fromBottom);
        // SignUp.setAnimation(fromBottom);

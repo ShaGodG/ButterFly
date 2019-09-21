@@ -5,82 +5,134 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="10"
     tools:context=".ContactActivity">
-    <TextView
-        android:text="@string/about"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="9"
+        android:orientation="vertical">
 
-        />
-    <TextView
+        <TextView
+            android:text="@string/about"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:text="@string/the_butterfly_corner_pattaya_welcome_you_to_join_us_on_special_tour_with_many_species_of_butterflies_flying_around_you"
-        android:layout_width="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content"/>
+            />
+        <TextView
 
-    <TextView
-        android:text="@string/address"
-        android:textStyle="bold"
-        android:textSize="26sp"
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:text="@string/the_butterfly_corner_pattaya_welcome_you_to_join_us_on_special_tour_with_many_species_of_butterflies_flying_around_you"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"/>
 
-        />
-    <!--<fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="80dp"
-        />-->
-    <TextView
-        android:text="@string/the_butterfly_corner_pattaya_co_ltd_nong_pla_lai"
-        android:layout_width="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:text="@string/address"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <TextView
-        android:text="@string/_66926199662"
-        android:clickable="true"
-        android:autoLink="phone"
-        android:inputType="phone"
-        android:layout_width="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content"/>
+            />
+        <!--<fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="80dp"
+            />-->
+        <TextView
+            android:text="@string/the_butterfly_corner_pattaya_co_ltd_nong_pla_lai"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"/>
 
-    <TextView
+        <TextView
+            android:text="@string/_66926199662"
+            android:clickable="true"
+            android:autoLink="phone"
+            android:inputType="phone"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"/>
 
-        android:text="@string/contact_butterflycorner_world"
-        android:inputType="textEmailAddress"
-        android:autoLink="email"
-        android:layout_width="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content"/>
+        <TextView
 
-    <TextView
+            android:text="@string/contact_butterflycorner_world"
+            android:inputType="textEmailAddress"
+            android:autoLink="email"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"/>
 
-        android:text="@string/https_the_butterfly_corner_pattaya_coltd_business_site"
-        android:inputType="textEmailAddress"
-        android:autoLink="web"
-        android:layout_width="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content"/>
+        <TextView
+
+            android:text="@string/https_the_butterfly_corner_pattaya_coltd_business_site"
+            android:inputType="textEmailAddress"
+            android:autoLink="web"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"/>
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fblogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="120dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/fblogo" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="6"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fblogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="120dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_gravity="bottom|left"
+
+                android:src="@drawable/fblogo" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iglogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="120dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_gravity="bottom"
+
+                android:src="@drawable/fblogo" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/twitterlogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="120dp"
+                android:layout_gravity="bottom|end|right"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/twtrlogo" />
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/sharebtn"
@@ -90,4 +142,7 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@drawable/share">
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
 </LinearLayout>
+

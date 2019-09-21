@@ -30,7 +30,7 @@
             android:id="@+id/textViewGame"
             android:text="@string/play_and_win_coupons"
             android:gravity="center"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="15dp"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:layout_width="wrap_content"

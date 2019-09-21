@@ -20,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView imgView;
     private String mCurrentPhotoPath;
     Button imgBtn;
+    Bitmap bitmap;
 
     private final int requestCode = 1;
 
@@ -51,6 +52,8 @@ public class GameActivity extends AppCompatActivity {
 
 
 
+
+
     }
 
     private void EnableRuntimePermission() {
@@ -73,7 +76,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(this.requestCode == requestCode && resultCode == RESULT_OK){
-            Bitmap bitmap = (Bitmap)data.getExtras().get("data");
+            bitmap = (Bitmap)data.getExtras().get("data");
             imgView.setImageBitmap(bitmap);
         }
     }
@@ -87,11 +90,11 @@ public class GameActivity extends AppCompatActivity {
 
                 if (PResult.length > 0 && PResult[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    Toast.makeText(GameActivity.this,"Permission Granted, Now your application can access CAMERA.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(GameActivity.this,"Permission Granted", Toast.LENGTH_LONG).show();
 
                 } else {
 
-                    Toast.makeText(GameActivity.this,"Permission Canceled, Now your application cannot access CAMERA.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(GameActivity.this,"Permission Canceled", Toast.LENGTH_LONG).show();
 
                 }
                 break;
