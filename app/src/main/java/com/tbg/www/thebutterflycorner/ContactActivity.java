@@ -24,7 +24,7 @@ public class ContactActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent shareintent = new Intent(Intent.ACTION_SEND);
                 shareintent.setType("text/plain");
-                String sharebody = "Send Viaa";
+                String sharebody = "https://play.google.com/store/apps/details?id=com.tbg.www.thebutterflycorner";
                 String sharesubject = "Send Via";
                 shareintent.putExtra(Intent.EXTRA_SUBJECT, sharesubject);
                 shareintent.putExtra(Intent.EXTRA_TEXT, sharebody);
