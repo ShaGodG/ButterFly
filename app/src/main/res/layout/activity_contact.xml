@@ -71,6 +71,17 @@
         android:layout_margin="10dp"
         android:layout_height="wrap_content"/>
 
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fblogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="120dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/fblogo" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/sharebtn"
         android:layout_width="wrap_content"
