@@ -25,12 +25,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.i("Bhenchod", String.valueOf(FirebaseAuth.getInstance().getCurrentUser().getEmail()));
+        Log.i("ShaGodG", String.valueOf(FirebaseAuth.getInstance().getCurrentUser().getEmail()));
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         CardView Butterfly = findViewById(R.id.butterflydb);
         Play = findViewById(R.id.playbtn);
-       // CardView SignUp = findViewById(R.id.signUp);
         CardView menu = findViewById(R.id.menuBtn);
         textView1=findViewById(R.id.text);
         textView2=findViewById(R.id.textViewGame);
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         textView2.animate().translationY(50).setDuration(800).setStartDelay(300);
         Butterfly.setAnimation(fromBottom);
         Play.setAnimation(fromBottom);
-       // SignUp.setAnimation(fromBottom);
         menu.setAnimation(fromBottom);
         couponBtn.setAnimation(fromBottom);
         contactUs.setAnimation(fromBottom);
