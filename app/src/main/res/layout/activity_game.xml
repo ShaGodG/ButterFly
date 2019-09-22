@@ -12,10 +12,20 @@
         android:id="@+id/gridViewImages"
 
         android:layout_weight="9"
-        android:padding="28dp"
+        android:padding="16dp"
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+
+    <EditText
+        android:id="@+id/userName"
+        android:hint="Enter player name"
+        android:inputType="textPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
 
 
     <LinearLayout
