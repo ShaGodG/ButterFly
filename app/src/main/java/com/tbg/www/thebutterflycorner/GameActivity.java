@@ -62,7 +62,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         imgBtn.setOnClickListener(this);
         compareImg.setOnClickListener(this);
 
-      
+
 
 
 
