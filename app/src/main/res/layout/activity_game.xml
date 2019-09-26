@@ -4,69 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity"
     android:orientation="vertical"
-    android:weightSum="10">
-
-    <ImageView
-        android:id="@+id/gridViewImages"
-
-        android:layout_weight="9"
-        android:padding="16dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
-    <EditText
-        android:id="@+id/userName"
-        android:hint="Enter player name"
-        android:inputType="textPersonName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-
+    android:padding="@dimen/activity_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".GameActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_margin"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        android:layout_marginLeft="30dp"
-        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txt_desc"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/preview_description"
+            android:textSize="15dp" />
 
-        <Button
-            android:id="@+id/imgButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:layout_gravity="center_horizontal|bottom"
-            android:text="Take picture"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:background="@color/colorPrimary"
-            android:layout_marginRight="50dp"
-            android:src="@drawable/ic_photo_camera_black_24dp"
-            />
-
-        <Button
-            android:id="@+id/nxtButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:layout_gravity="center_horizontal|bottom"
-            android:text="Compare"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:background="@color/colorPrimary"
-            android:src="@drawable/ic_photo_camera_black_24dp"
-            />
-
+        <!-- To display picture taken -->
+        <ImageView
+            android:id="@+id/imgPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
 
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
+        <!-- Capture picture button -->
+        <Button
+            android:id="@+id/btnCapturePicture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_8"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/btn_take_picture"
+            android:textColor="@android:color/white" />
+
+        <!-- Record video button -->
+        <Button
+            android:id="@+id/btnRecordVideo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_8"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="Compare"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 </LinearLayout>
