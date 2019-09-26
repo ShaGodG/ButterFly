@@ -2,6 +2,7 @@ package com.tbg.www.thebutterflycorner;
 
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -71,9 +72,8 @@ public class GameActivity extends AppCompatActivity {
             // will close the app if the device doesn't have camera
             finish();
         }
-
-
-        imgPreview = findViewById(R.id.imageView);
+        txtDescription = findViewById(R.id.txt_descs);
+        imgPreview = findViewById(R.id.imgPreviews);
 
         btnCapturePicture = findViewById(R.id.btnCapturePicture);
         btnRecordVideo = findViewById(R.id.btnRecordVideo);
@@ -213,8 +213,7 @@ public class GameActivity extends AppCompatActivity {
     private void previewCapturedImage() {
         try {
             // hide video preview
-
-
+            txtDescription.setVisibility(View.GONE);
             imgPreview.setVisibility(View.VISIBLE);
 
 
