@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         CardView couponBtn =  findViewById(R.id.couponbtn);
         CardView contactUs = findViewById(R.id.contactBtn);
         fromBottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
-        textView1.animate().translationY(50).setDuration(800).setStartDelay(300);
-        textView2.animate().translationY(50).setDuration(800).setStartDelay(300);
+        //textView1.animate().translationY(50).setDuration(800).setStartDelay(300);
+        //textView2.animate().translationY(50).setDuration(800).setStartDelay(300);
         Butterfly.setAnimation(fromBottom);
         Play.setAnimation(fromBottom);
         menu.setAnimation(fromBottom);
