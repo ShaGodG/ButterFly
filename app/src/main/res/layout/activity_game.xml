@@ -57,14 +57,14 @@
 
         <!-- Record video button -->
         <Button
-            android:id="@+id/btnRecordVideo"
+            android:id="@+id/btnCompare"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_8"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:foreground="?attr/selectableItemBackground"
-            android:text="Compare"
+            android:text="@string/compare"
             android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>

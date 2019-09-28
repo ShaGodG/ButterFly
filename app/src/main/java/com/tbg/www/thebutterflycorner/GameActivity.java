@@ -2,7 +2,6 @@ package com.tbg.www.thebutterflycorner;
 
 
 import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,12 +9,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -27,20 +26,31 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
 import java.io.File;
 import java.util.List;
+
+import id.zelory.compressor.Compressor;
 
 public class GameActivity extends AppCompatActivity {
 
     // Activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
-    private static final int CAMERA_CAPTURE_VIDEO_REQUEST_CODE = 200;
+    //private static final int CAMERA_CAPTURE_VIDEO_REQUEST_CODE = 200;
 
     // key to store image path in savedInstance state
     public static  final String KEY_IMAGE_STORAGE_PATH = "image_path";
 
     public static final int MEDIA_TYPE_IMAGE = 1;
-    public static final int MEDIA_TYPE_VIDEO = 2;
+    //public static final int MEDIA_TYPE_VIDEO = 2;
 
     // Bitmap sampling size
     public static final int BITMAP_SAMPLE_SIZE = 8;
@@ -55,7 +65,7 @@ public class GameActivity extends AppCompatActivity {
 
     private TextView txtDescription;
     private ImageView imgPreview;
-    private Button btnCapturePicture, btnRecordVideo;
+    private Button btnCapturePicture, btnCompare;
 
 
     @Override
@@ -76,7 +86,7 @@ public class GameActivity extends AppCompatActivity {
         imgPreview = findViewById(R.id.imgPreviews);
 
         btnCapturePicture = findViewById(R.id.btnCapturePicture);
-        btnRecordVideo = findViewById(R.id.btnRecordVideo);
+        btnCompare = findViewById(R.id.btnCompare);
 
         /**
          * Capture image on button click
@@ -89,6 +99,43 @@ public class GameActivity extends AppCompatActivity {
                     captureImage();
                 } else {
                     requestCameraPermission(MEDIA_TYPE_IMAGE);
+                }
+            }
+        });
+
+        btnCompare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try
+                {
+                    HttpClient client = new DefaultHttpClient();
+                    HttpPost post = new HttpPost("http://gandharva19.pythonanywhere.com");
+
+                    MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
+                    entityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+
+                    entityBuilder.addTextBody("username", "shasha");
+                    File file = new File(imageStoragePath);
+                    File compressedImgFile = new Compressor(getApplicationContext()).compressToFile(file);
+
+                    System.out.println("==============================="+file);
+                    System.out.println("==============================="+imageStoragePath);
+
+                    entityBuilder.addBinaryBody("file", compressedImgFile);
+                    System.out.println("==============================="+entityBuilder);
+
+                    HttpEntity entity = entityBuilder.build();
+                    post.setEntity(entity);
+                    HttpResponse response = client.execute(post);
+                    HttpEntity httpEntity = response.getEntity();
+                    String result = EntityUtils.toString(httpEntity);
+                    Log.v("result", result);
+
+                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
                 }
             }
         });
