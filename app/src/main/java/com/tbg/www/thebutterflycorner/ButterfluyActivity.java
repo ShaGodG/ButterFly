@@ -82,7 +82,4 @@ public class ButterfluyActivity extends AppCompatActivity {
         dialog.show();
 
     }
-
-
-
 }
