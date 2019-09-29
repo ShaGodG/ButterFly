@@ -69,6 +69,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
 
 
     implementation 'org.apache.httpcomponents:httpcore:4.4.12'

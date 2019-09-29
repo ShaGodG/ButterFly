@@ -2,9 +2,12 @@ package com.tbg.www.thebutterflycorner;
 
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -12,6 +15,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +23,14 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonArray;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -34,8 +45,13 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import id.zelory.compressor.Compressor;
@@ -55,6 +71,9 @@ public class GameActivity extends AppCompatActivity {
     // Bitmap sampling size
     public static final int BITMAP_SAMPLE_SIZE = 8;
 
+    GridView gridView;
+    ArrayList<String>gridViewStringDesc;
+
     // Gallery directory name to store the images or videos
     public static final String GALLERY_DIRECTORY_NAME = "TheButterflyCorner";
 
@@ -63,15 +82,36 @@ public class GameActivity extends AppCompatActivity {
 
     private static String imageStoragePath;
 
+    ArrayList<ModelCompare>my_list;
+
     private TextView txtDescription;
     private ImageView imgPreview;
-    private Button btnCapturePicture, btnCompare;
+    RequestQueue requestQueue;;
+    String result;
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    private Button btnCapturePicture, btnCompare,btnReset,btnResult;
+    private static final String SERVER_URL ="http://gandharva19.pythonanywhere.com";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        requestQueue = Volley.newRequestQueue(this);
+        my_list=new ArrayList<>();
+
+        //dialog fragments
+        final FragmentManager fm = getSupportFragmentManager();
+        final ButterflyFragment butterflyFragment= new ButterflyFragment();
 
 
         // Checking availability of the camera
@@ -84,6 +124,8 @@ public class GameActivity extends AppCompatActivity {
         }
         txtDescription = findViewById(R.id.txt_descs);
         imgPreview = findViewById(R.id.imgPreviews);
+        btnReset=findViewById(R.id.btnReset);
+        btnResult=findViewById(R.id.btnResult);
 
         btnCapturePicture = findViewById(R.id.btnCapturePicture);
         btnCompare = findViewById(R.id.btnCompare);
@@ -102,12 +144,21 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
-
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgPreview.setImageDrawable(null);
+            }
+        });
         btnCompare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Score: 100 ",Toast.LENGTH_SHORT);
+
                 try
                 {
+
+
                     HttpClient client = new DefaultHttpClient();
                     HttpPost post = new HttpPost("http://gandharva19.pythonanywhere.com");
 
@@ -128,10 +179,45 @@ public class GameActivity extends AppCompatActivity {
                     post.setEntity(entity);
                     HttpResponse response = client.execute(post);
                     HttpEntity httpEntity = response.getEntity();
-                    String result = EntityUtils.toString(httpEntity);
+                    result = EntityUtils.toString(httpEntity);
                     Log.v("result", result);
+                    Toast.makeText(GameActivity.this, result, Toast.LENGTH_SHORT).show();
+                    setResult(result);
 
-                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                    Bundle args = new Bundle();
+                    args.putString("name",result);
+                    butterflyFragment.setArguments(args);
+
+
+
+
+                    butterflyFragment.show(fm,"butterflies");
+
+
+
+
+
+
+
+
+
+                    //final Dialog dialog = new Dialog(getApplicationContext());
+
+                    //dialog.setContentView(R.layout.dialog_images);
+                    //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    //GridView gridView = dialog.findViewById(R.id.gridView);
+                   // DialogGridAdapter adapterViewAndroid = new DialogGridAdapter(GameActivity.this, gridViewString, gridViewImageId);
+                    //gridView=(GridView)findViewById(R.id.grid_view_image_text);
+                   // gridView.setAdapter(adapterViewAndroid);
+                   // dialog.show();
+
+
+
+
+
+
+                    // Intent i = new Intent(GameActivity.this,ButterfluyActivity.class);
+                    //startActivity(i);
                 }
                 catch(Exception e)
                 {
@@ -140,8 +226,20 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        btnResult.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         restoreFromBundle(savedInstanceState);
     }
+
+
+
 
     private void restoreFromBundle(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
