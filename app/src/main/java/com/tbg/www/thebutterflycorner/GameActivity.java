@@ -139,7 +139,7 @@ public class GameActivity extends AppCompatActivity {
         btnCapturePicture.setEnabled(true);
         btnCompare.setAlpha(.5f);
         btnCompare.setEnabled(false);
-        if(counter==1){
+        if(counter==5){
             btnCompare.setAlpha(.5f);
             btnCompare.setEnabled(false);
             btnCapturePicture.setAlpha(.5f);
