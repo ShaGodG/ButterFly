@@ -185,6 +185,16 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 imgPreview.setImageDrawable(null);
+                counter = 0;
+                String text=counter+"/ 5";
+                scoreTextView.setText( text);
+                btnCompare.setAlpha(.5f);
+                btnCompare.setEnabled(false);
+                btnResult.setAlpha(.5f);
+                btnResult.setEnabled(false);
+                btnCapturePicture.setAlpha(1f);
+                btnCapturePicture.setEnabled(true);
+
             }
         });
         btnCompare.setOnClickListener(new View.OnClickListener() {
