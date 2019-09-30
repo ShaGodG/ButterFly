@@ -20,13 +20,14 @@ public class ButterflyFragment extends DialogFragment {
     GridView gridView;
     ArrayList<String> gridViewString;
     ArrayList<Integer>gridViewImageId;
+    GameActivity gameActivity;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.dialog_images,null);
-
+        gameActivity=(GameActivity)getActivity();
         gridView =rootView.findViewById(R.id.gridView);
         getDialog().setTitle("Choose a matching image");
 
@@ -50,12 +51,15 @@ public class ButterflyFragment extends DialogFragment {
 
                 if(gridViewStrinRes.equals(removeQuotes)){
 
-                    Toast.makeText(getContext(), "Correct match.You are doing great, keep going...", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Correct match.You are doing great, keep going...", Toast.LENGTH_SHORT).show();
 
                 }else{
 
-                    Toast.makeText(getContext(), "Wrong match, You need to improve...", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Wrong match, You need to improve...", Toast.LENGTH_SHORT).show();
                 }
+                gameActivity.counter++;
+                ((GameActivity) getActivity()).update();
+                getFragmentManager().popBackStackImmediate();
 
 
             }

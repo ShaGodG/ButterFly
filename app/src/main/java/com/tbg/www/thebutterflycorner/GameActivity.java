@@ -24,6 +24,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -89,6 +90,9 @@ public class GameActivity extends AppCompatActivity {
     RequestQueue requestQueue;;
     String result;
 
+    private TextView scoreTextView;
+
+
     public String getResult() {
         return result;
     }
@@ -99,7 +103,30 @@ public class GameActivity extends AppCompatActivity {
 
     private Button btnCapturePicture, btnCompare,btnReset,btnResult;
     private static final String SERVER_URL ="http://gandharva19.pythonanywhere.com";
+    public int counter=0;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+       }
+
+    public void update(){
+        //Toast.makeText(getApplicationContext(),"Called bc",Toast.LENGTH_LONG).show();
+        String text=counter+"/ 5";
+        scoreTextView.setText( text);
+        btnCapturePicture.setAlpha(1f);
+        btnCapturePicture.setEnabled(true);
+        btnCompare.setAlpha(.5f);
+        btnCompare.setEnabled(false);
+        if(counter==5){
+            btnCompare.setAlpha(.5f);
+            btnCompare.setEnabled(false);
+            btnCapturePicture.setAlpha(.5f);
+            btnCapturePicture.setEnabled(false);
+            btnResult.setAlpha(1f);
+            btnResult.setEnabled(true);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,12 +135,10 @@ public class GameActivity extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         my_list=new ArrayList<>();
-
+        counter=0;
         //dialog fragments
         final FragmentManager fm = getSupportFragmentManager();
         final ButterflyFragment butterflyFragment= new ButterflyFragment();
-
-
         // Checking availability of the camera
         if (!CameraUtils.isDeviceSupportCamera(getApplicationContext())) {
             Toast.makeText(getApplicationContext(),
@@ -126,10 +151,13 @@ public class GameActivity extends AppCompatActivity {
         imgPreview = findViewById(R.id.imgPreviews);
         btnReset=findViewById(R.id.btnReset);
         btnResult=findViewById(R.id.btnResult);
-
+        scoreTextView=findViewById(R.id.score);
         btnCapturePicture = findViewById(R.id.btnCapturePicture);
         btnCompare = findViewById(R.id.btnCompare);
-
+        btnCompare.setAlpha(.5f);
+        btnCompare.setEnabled(false);
+        btnResult.setAlpha(.5f);
+        btnResult.setEnabled(false);
         /**
          * Capture image on button click
          */
@@ -157,7 +185,7 @@ public class GameActivity extends AppCompatActivity {
 
                 try
                 {
-
+//fragment banaya hai
 
                     HttpClient client = new DefaultHttpClient();
                     HttpPost post = new HttpPost("http://gandharva19.pythonanywhere.com");
@@ -186,12 +214,17 @@ public class GameActivity extends AppCompatActivity {
 
                     Bundle args = new Bundle();
                     args.putString("name",result);
+                    FragmentTransaction ft=fm.beginTransaction();
+
                     butterflyFragment.setArguments(args);
+                    ft.addToBackStack("butterflies");
+                    ft.add(butterflyFragment, "butterflies");
+                    ft.commit();
 
 
 
 
-                    butterflyFragment.show(fm,"butterflies");
+                    //butterflyFragment.show(fm,"butterflies");
 
 
 
@@ -309,6 +342,10 @@ public class GameActivity extends AppCompatActivity {
 
                     // successfully captured the image
                     // display it in image view
+                    btnCompare.setAlpha(1f);
+                    btnCompare.setEnabled(true);
+                    btnCapturePicture.setAlpha(.5f);
+                    btnCapturePicture.setEnabled(false);
                     previewCapturedImage();
                 } else if (resultCode == RESULT_CANCELED) {
                     // user cancelled Image capture
