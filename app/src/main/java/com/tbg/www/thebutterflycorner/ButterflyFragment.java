@@ -35,9 +35,9 @@ public class ButterflyFragment extends DialogFragment {
         ));
 
 
-        gridViewImageId = new ArrayList<>(Arrays.asList(R.drawable.acraeaviolae, R.drawable.cethosiacyane, R.drawable.danauschry,
-                R.drawable.graphiumagamemnon, R.drawable.hypolimnasboli, R.drawable.pachioptaaristo,
-                R.drawable.papiliodemoleus, R.drawable.papiliomemnon, R.drawable.parthenosslyvia));
+        gridViewImageId = new ArrayList<>(Arrays.asList(R.drawable.acraea_violae, R.drawable.cethosia_cyane, R.drawable.danaus_chrysippus,
+                R.drawable.graphium_agamemnon, R.drawable.hypolimnas_bolina, R.drawable.pachlioptaaristolochiae,
+                R.drawable.papiliodemoleus, R.drawable.papiliomemnon, R.drawable.parthenossylvia));
         DialogGridAdapter dialogGridAdapter = new DialogGridAdapter(getContext(),gridViewString,gridViewImageId);
         gridView.setAdapter(dialogGridAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

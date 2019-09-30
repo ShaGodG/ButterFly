@@ -120,7 +120,7 @@ public class GameActivity extends AppCompatActivity {
        }
 
     public void update(){
-        //Toast.makeText(getApplicationContext(),"Called bc",Toast.LENGTH_LONG).show();
+
         String text=counter+"/ 5";
         scoreTextView.setText( text);
         btnCapturePicture.setAlpha(1f);
@@ -194,7 +194,7 @@ public class GameActivity extends AppCompatActivity {
 
                 try
                 {
-//fragment banaya hai
+
 
                     HttpClient client = new DefaultHttpClient();
                     HttpPost post = new HttpPost("http://gandharva19.pythonanywhere.com");
@@ -231,35 +231,6 @@ public class GameActivity extends AppCompatActivity {
                     ft.commit();
 
 
-
-
-                    //butterflyFragment.show(fm,"butterflies");
-
-
-
-
-
-
-
-
-
-                    //final Dialog dialog = new Dialog(getApplicationContext());
-
-                    //dialog.setContentView(R.layout.dialog_images);
-                    //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    //GridView gridView = dialog.findViewById(R.id.gridView);
-                   // DialogGridAdapter adapterViewAndroid = new DialogGridAdapter(GameActivity.this, gridViewString, gridViewImageId);
-                    //gridView=(GridView)findViewById(R.id.grid_view_image_text);
-                   // gridView.setAdapter(adapterViewAndroid);
-                   // dialog.show();
-
-
-
-
-
-
-                    // Intent i = new Intent(GameActivity.this,ButterfluyActivity.class);
-                    //startActivity(i);
                 }
                 catch(Exception e)
                 {

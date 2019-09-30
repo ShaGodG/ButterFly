@@ -33,9 +33,9 @@ public class ButterfluyActivity extends AppCompatActivity {
         ));
         getSupportActionBar().setTitle("Butterflies");
 
-        gridViewImageId = new ArrayList<>(Arrays.asList(R.drawable.acraeaviolae, R.drawable.cethosiacyane, R.drawable.danauschry,
-                R.drawable.graphiumagamemnon, R.drawable.hypolimnasboli, R.drawable.pachioptaaristo,
-                R.drawable.papiliodemoleus, R.drawable.papiliomemnon, R.drawable.parthenosslyvia));
+        gridViewImageId = new ArrayList<>(Arrays.asList(R.drawable.acraea_violae, R.drawable.cethosia_cyane, R.drawable.danaus_chrysippus,
+                R.drawable.graphium_agamemnon, R.drawable.hypolimnas_bolina, R.drawable.pachlioptaaristolochiae,
+                R.drawable.papiliodemoleus, R.drawable.papiliomemnon, R.drawable.parthenossylvia));
 
        gridViewStringDesc =new ArrayList<>(Arrays.asList("Acraea terpsicore, the tawny coster, is a small, 53–64 millimetres, leathery-winged butterfly common in grassland and scrub habitats. It belongs to the Nymphalidae or brush-footed butterfly family. It has a weak fluttery flight. It is avoided by most insect predators.",
                "Cethosia cyane, the leopard lacewing, is a species of heliconiine butterfly found from India to southern China, and Indochina. Its range has expanded in the last few decades, and its arrival in the southern part of the Malay Peninsula, including Singapore, is relatively recent",
