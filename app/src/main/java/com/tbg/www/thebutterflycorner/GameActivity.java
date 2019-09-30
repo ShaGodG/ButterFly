@@ -6,8 +6,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -20,10 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -32,16 +26,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.JsonArray;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -53,9 +43,6 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
-import com.google.zxing.BarcodeFormat;
-
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -64,14 +51,15 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import id.zelory.compressor.Compressor;
 
@@ -132,7 +120,7 @@ public class GameActivity extends AppCompatActivity {
        }
 
     public void update(){
-        //Toast.makeText(getApplicationContext(),"Called bc",Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"Called",Toast.LENGTH_LONG).show();
         String text=counter+"/ 5";
         scoreTextView.setText( text);
         btnCapturePicture.setAlpha(1f);
@@ -243,36 +231,6 @@ public class GameActivity extends AppCompatActivity {
                     ft.add(butterflyFragment, "butterflies");
                     ft.commit();
 
-
-
-
-                    //butterflyFragment.show(fm,"butterflies");
-
-
-
-
-
-
-
-
-
-                    //final Dialog dialog = new Dialog(getApplicationContext());
-
-                    //dialog.setContentView(R.layout.dialog_images);
-                    //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    //GridView gridView = dialog.findViewById(R.id.gridView);
-                   // DialogGridAdapter adapterViewAndroid = new DialogGridAdapter(GameActivity.this, gridViewString, gridViewImageId);
-                    //gridView=(GridView)findViewById(R.id.grid_view_image_text);
-                   // gridView.setAdapter(adapterViewAndroid);
-                   // dialog.show();
-
-
-
-
-
-
-                    // Intent i = new Intent(GameActivity.this,ButterfluyActivity.class);
-                    //startActivity(i);
                 }
                 catch(Exception e)
                 {
