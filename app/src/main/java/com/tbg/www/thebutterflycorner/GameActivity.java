@@ -19,6 +19,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.UUID;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -32,11 +33,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.JsonArray;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+
+import com.google.zxing.BarcodeFormat;
+
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -118,7 +127,7 @@ public class GameActivity extends AppCompatActivity {
         btnCapturePicture.setEnabled(true);
         btnCompare.setAlpha(.5f);
         btnCompare.setEnabled(false);
-        if(counter==5){
+        if(counter==1){
             btnCompare.setAlpha(.5f);
             btnCompare.setEnabled(false);
             btnCapturePicture.setAlpha(.5f);
@@ -264,6 +273,31 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                final Dialog dialogQr = new Dialog(GameActivity.this);
+                dialogQr.setContentView(R.layout.layout_qr_code);
+                ImageView imgBarcode = dialogQr.findViewById(R.id.imgQrCode);
+
+                JSONObject embeddedObj = new JSONObject();
+                try {
+
+                    embeddedObj.put("code", UUID.randomUUID().toString());
+
+                    // Whatever you need to encode in the QR code
+                    MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+
+                    BitMatrix bitMatrix = multiFormatWriter.encode(embeddedObj.toString(), BarcodeFormat.QR_CODE, 200, 200);
+                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                    Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+                    imgBarcode.setImageBitmap(bitmap);
+
+
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                dialogQr.show();
 
             }
         });
