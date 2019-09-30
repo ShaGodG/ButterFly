@@ -19,8 +19,12 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +36,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.JsonArray;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -96,7 +105,7 @@ public class GameActivity extends AppCompatActivity {
 
     private TextView txtDescription;
     private ImageView imgPreview;
-    RequestQueue requestQueue;;
+    RequestQueue requestQueue;
     String result;
 
     private TextView scoreTextView;
@@ -113,6 +122,9 @@ public class GameActivity extends AppCompatActivity {
     private Button btnCapturePicture, btnCompare,btnReset,btnResult;
     private static final String SERVER_URL ="http://gandharva19.pythonanywhere.com";
     public int counter=0;
+    // Access a Cloud Firestore instance from your Activity
+    FirebaseFirestore db;
+    Map<String, Object> coupon;
 
     @Override
     protected void onResume() {
@@ -127,7 +139,7 @@ public class GameActivity extends AppCompatActivity {
         btnCapturePicture.setEnabled(true);
         btnCompare.setAlpha(.5f);
         btnCompare.setEnabled(false);
-        if(counter==5){
+        if(counter==1){
             btnCompare.setAlpha(.5f);
             btnCompare.setEnabled(false);
             btnCapturePicture.setAlpha(.5f);
@@ -170,6 +182,7 @@ public class GameActivity extends AppCompatActivity {
         /**
          * Capture image on button click
          */
+        db = FirebaseFirestore.getInstance();
         btnCapturePicture.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -280,7 +293,10 @@ public class GameActivity extends AppCompatActivity {
                 JSONObject embeddedObj = new JSONObject();
                 try {
 
-                    embeddedObj.put("code", UUID.randomUUID().toString());
+                    String couponId=UUID.randomUUID().toString();
+                    embeddedObj.put("couponId",couponId );
+                    embeddedObj.put("userId",FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    embeddedObj.put("used","0");
 
                     // Whatever you need to encode in the QR code
                     MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
@@ -289,7 +305,10 @@ public class GameActivity extends AppCompatActivity {
                     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                     Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                     imgBarcode.setImageBitmap(bitmap);
-
+                    coupon = new HashMap<>();
+                    coupon.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    coupon.put("couponId",couponId);
+                    coupon.put("used","0");
 
                 } catch (WriterException e) {
                     e.printStackTrace();
@@ -298,11 +317,32 @@ public class GameActivity extends AppCompatActivity {
                 }
 
                 dialogQr.show();
+                storetoDB(coupon);
 
             }
         });
 
         restoreFromBundle(savedInstanceState);
+    }
+
+    void storetoDB(Map<String, Object> coupon){
+
+
+// Add a new document with a generated ID
+        db.collection("coupons")
+                .add(coupon)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("bc", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("bc", "Error adding document", e);
+                    }
+                });
     }
 
 
