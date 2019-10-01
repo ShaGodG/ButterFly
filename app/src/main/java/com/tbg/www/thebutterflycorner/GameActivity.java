@@ -3,12 +3,12 @@ package com.tbg.www.thebutterflycorner;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -28,11 +28,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonArray;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -44,8 +40,6 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
-import com.google.zxing.BarcodeFormat;
-
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -55,13 +49,11 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import id.zelory.compressor.Compressor;
@@ -113,6 +105,7 @@ public class GameActivity extends AppCompatActivity {
     private Button btnCapturePicture, btnCompare,btnReset,btnResult;
     private static final String SERVER_URL ="http://gandharva19.pythonanywhere.com";
     public int counter=0;
+    public int score=0;
 
     @Override
     protected void onResume() {
@@ -136,6 +129,8 @@ public class GameActivity extends AppCompatActivity {
             btnResult.setEnabled(true);
         }
     }
+    ButterflyFragment butterflyFragment;
+    FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,9 +140,10 @@ public class GameActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         my_list=new ArrayList<>();
         counter=0;
+        score=0;
         //dialog fragments
-        final FragmentManager fm = getSupportFragmentManager();
-        final ButterflyFragment butterflyFragment= new ButterflyFragment();
+        fm = getSupportFragmentManager();
+        butterflyFragment= new ButterflyFragment();
         // Checking availability of the camera
         if (!CameraUtils.isDeviceSupportCamera(getApplicationContext())) {
             Toast.makeText(getApplicationContext(),
@@ -186,6 +182,7 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 imgPreview.setImageDrawable(null);
                 counter = 0;
+                score=0;
                 String text=counter+"/ 5";
                 scoreTextView.setText( text);
                 btnCompare.setAlpha(.5f);
@@ -200,52 +197,55 @@ public class GameActivity extends AppCompatActivity {
         btnCompare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Score: 100 ",Toast.LENGTH_SHORT);
 
-                try
-                {
+                AsyncTaskRunner myTask = new AsyncTaskRunner();
+                myTask.execute();
+              //  Toast.makeText(getApplicationContext(),"Score: 100 ",Toast.LENGTH_SHORT);
 
-
-                    HttpClient client = new DefaultHttpClient();
-                    HttpPost post = new HttpPost("http://gandharva19.pythonanywhere.com");
-
-                    MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
-                    entityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-
-                    entityBuilder.addTextBody("username", "shasha");
-                    File file = new File(imageStoragePath);
-                    File compressedImgFile = new Compressor(getApplicationContext()).compressToFile(file);
-
-                    System.out.println("==============================="+file);
-                    System.out.println("==============================="+imageStoragePath);
-
-                    entityBuilder.addBinaryBody("file", compressedImgFile);
-                    System.out.println("==============================="+entityBuilder);
-
-                    HttpEntity entity = entityBuilder.build();
-                    post.setEntity(entity);
-                    HttpResponse response = client.execute(post);
-                    HttpEntity httpEntity = response.getEntity();
-                    result = EntityUtils.toString(httpEntity);
-                    Log.v("result", result);
-                    Toast.makeText(GameActivity.this, result, Toast.LENGTH_SHORT).show();
-                    setResult(result);
-
-                    Bundle args = new Bundle();
-                    args.putString("name",result);
-                    FragmentTransaction ft=fm.beginTransaction();
-
-                    butterflyFragment.setArguments(args);
-                    ft.addToBackStack("butterflies");
-                    ft.add(butterflyFragment, "butterflies");
-                    ft.commit();
-
-
-                }
-                catch(Exception e)
-                {
-                    e.printStackTrace();
-                }
+//                try
+//                {
+//
+//
+//                    HttpClient client = new DefaultHttpClient();
+//                    HttpPost post = new HttpPost("http://gandharva19.pythonanywhere.com");
+//
+//                    MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
+//                    entityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+//
+//                    entityBuilder.addTextBody("username", "shasha");
+//                    File file = new File(imageStoragePath);
+//                    File compressedImgFile = new Compressor(getApplicationContext()).compressToFile(file);
+//
+//                    System.out.println("==============================="+file);
+//                    System.out.println("==============================="+imageStoragePath);
+//
+//                    entityBuilder.addBinaryBody("file", compressedImgFile);
+//                    System.out.println("==============================="+entityBuilder);
+//
+//                    HttpEntity entity = entityBuilder.build();
+//                    post.setEntity(entity);
+//                    HttpResponse response = client.execute(post);
+//                    HttpEntity httpEntity = response.getEntity();
+//                    result = EntityUtils.toString(httpEntity);
+//                    Log.v("result", result);
+//                    Toast.makeText(GameActivity.this, result, Toast.LENGTH_SHORT).show();
+//                    setResult(result);
+//
+//                    Bundle args = new Bundle();
+//                    args.putString("name",result);
+//                    FragmentTransaction ft=fm.beginTransaction();
+//
+//                    butterflyFragment.setArguments(args);
+//                    ft.addToBackStack("butterflies");
+//                    ft.add(butterflyFragment, "butterflies");
+//                    ft.commit();
+//
+//
+//                }
+//                catch(Exception e)
+//                {
+//                    e.printStackTrace();
+//                }
             }
         });
 
@@ -254,32 +254,40 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                final Dialog dialogQr = new Dialog(GameActivity.this);
-                dialogQr.setContentView(R.layout.layout_qr_code);
-                ImageView imgBarcode = dialogQr.findViewById(R.id.imgQrCode);
+                btnResult.setAlpha(0.5f);
+                btnResult.setEnabled(false);
+                if (score >= 3){
+                    final Dialog dialogQr = new Dialog(GameActivity.this);
+                    dialogQr.setContentView(R.layout.layout_qr_code);
+                    ImageView imgBarcode = dialogQr.findViewById(R.id.imgQrCode);
 
-                JSONObject embeddedObj = new JSONObject();
-                try {
+                    JSONObject embeddedObj = new JSONObject();
+                    try {
 
-                    embeddedObj.put("code", UUID.randomUUID().toString());
+                        embeddedObj.put("code", UUID.randomUUID().toString());
 
                     // Whatever you need to encode in the QR code
-                    MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+                        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
-                    BitMatrix bitMatrix = multiFormatWriter.encode(embeddedObj.toString(), BarcodeFormat.QR_CODE, 200, 200);
-                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                    Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                    imgBarcode.setImageBitmap(bitmap);
+                        BitMatrix bitMatrix = multiFormatWriter.encode(embeddedObj.toString(), BarcodeFormat.QR_CODE, 200, 200);
+                        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                        Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+                        imgBarcode.setImageBitmap(bitmap);
 
 
-                } catch (WriterException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    } catch (WriterException e) {
+                        e.printStackTrace();
+                    }catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    dialogQr.show();
                 }
+                else{
+                    Toast.makeText(getApplicationContext(),"Better Luck Next time",Toast.LENGTH_LONG).show();
+                    finish();
 
-                dialogQr.show();
-
+                }
             }
         });
 
@@ -440,6 +448,81 @@ public class GameActivity extends AppCompatActivity {
 
                     }
                 }).show();
+    }
+
+
+
+    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
+
+
+        ProgressDialog progressDialog;
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+
+
+                HttpClient client = new DefaultHttpClient();
+                HttpPost post = new HttpPost("http://gandharva19.pythonanywhere.com");
+
+                MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
+                entityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+
+                entityBuilder.addTextBody("username", "shasha");
+                File file = new File(imageStoragePath);
+                File compressedImgFile = new Compressor(getApplicationContext()).compressToFile(file);
+
+                System.out.println("===============================" + file);
+                System.out.println("===============================" + imageStoragePath);
+
+                entityBuilder.addBinaryBody("file", compressedImgFile);
+                System.out.println("===============================" + entityBuilder);
+
+                HttpEntity entity = entityBuilder.build();
+                post.setEntity(entity);
+                HttpResponse response = client.execute(post);
+                HttpEntity httpEntity = response.getEntity();
+                result = EntityUtils.toString(httpEntity);
+                Log.v("result", result);
+//                Toast.makeText(GameActivity.this, result, Toast.LENGTH_SHORT).show();
+                setResult(result);
+
+                return result;
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return "1";
+        }
+
+
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            // execution of result of Long time consuming operation
+            progressDialog.dismiss();
+            Bundle args = new Bundle();
+            args.putString("name",result);
+            FragmentTransaction ft=fm.beginTransaction();
+
+            butterflyFragment.setArguments(args);
+            ft.addToBackStack("butterflies");
+            ft.add(butterflyFragment, "butterflies");
+            ft.commit();
+
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog = ProgressDialog.show(GameActivity.this,"Please wait","Fetching Results..");
+
+        }
+
+
+
     }
 }
 

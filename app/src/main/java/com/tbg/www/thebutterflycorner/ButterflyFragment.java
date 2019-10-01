@@ -35,7 +35,7 @@ public class ButterflyFragment extends DialogFragment {
         ));
 
 
-        gridViewImageId = new ArrayList<>(Arrays.asList(R.drawable.acraea_violae, R.drawable.cethosia_cyane, R.drawable.danaus_chrysippus,
+        gridViewImageId = new ArrayList<>(Arrays.asList( R.drawable.acraea_violae,R.drawable.cethosia_cyane, R.drawable.danaus_chrysippus,
                 R.drawable.graphium_agamemnon, R.drawable.hypolimnas_bolina, R.drawable.pachlioptaaristolochiae,
                 R.drawable.papiliodemoleus, R.drawable.papiliomemnon, R.drawable.parthenossylvia));
         DialogGridAdapter dialogGridAdapter = new DialogGridAdapter(getContext(),gridViewString,gridViewImageId);
@@ -51,11 +51,11 @@ public class ButterflyFragment extends DialogFragment {
 
                 if(gridViewStrinRes.equals(removeQuotes)){
 
-                    //Toast.makeText(getContext(), "Correct match.You are doing great, keep going...", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(getContext(), "Correct match.You are doing great, keep going...", Toast.LENGTH_SHORT).show();
+                    gameActivity.score++;
                 }else{
 
-                    //Toast.makeText(getContext(), "Wrong match, You need to improve...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Wrong match, You need to improve...", Toast.LENGTH_SHORT).show();
                 }
                 gameActivity.counter++;
                 ((GameActivity) getActivity()).update();
