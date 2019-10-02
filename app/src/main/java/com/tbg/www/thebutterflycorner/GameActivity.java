@@ -19,8 +19,12 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +33,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -107,6 +116,9 @@ public class GameActivity extends AppCompatActivity {
     public int counter=0;
     public int score=0;
 
+    FirebaseFirestore db;
+    Map<String, Object> coupon;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -143,6 +155,8 @@ public class GameActivity extends AppCompatActivity {
         score=0;
         //dialog fragments
         fm = getSupportFragmentManager();
+        db = FirebaseFirestore.getInstance();
+
         butterflyFragment= new ButterflyFragment();
         // Checking availability of the camera
         if (!CameraUtils.isDeviceSupportCamera(getApplicationContext())) {
@@ -264,7 +278,11 @@ public class GameActivity extends AppCompatActivity {
                     JSONObject embeddedObj = new JSONObject();
                     try {
 
-                        embeddedObj.put("code", UUID.randomUUID().toString());
+                       // embeddedObj.put("code", UUID.randomUUID().toString());
+                        String couponId=UUID.randomUUID().toString();
+                        embeddedObj.put("couponId",couponId );
+                        embeddedObj.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        embeddedObj.put("used","0");
 
                     // Whatever you need to encode in the QR code
                         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
@@ -273,7 +291,10 @@ public class GameActivity extends AppCompatActivity {
                         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                         Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                         imgBarcode.setImageBitmap(bitmap);
-
+                        coupon = new HashMap<>();
+                        coupon.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        coupon.put("couponId",couponId);
+                        coupon.put("used","0");
 
                     } catch (WriterException e) {
                         e.printStackTrace();
@@ -282,6 +303,8 @@ public class GameActivity extends AppCompatActivity {
                     }
 
                     dialogQr.show();
+                    storetoDB(coupon);
+
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Better Luck Next time",Toast.LENGTH_LONG).show();
@@ -294,6 +317,25 @@ public class GameActivity extends AppCompatActivity {
         restoreFromBundle(savedInstanceState);
     }
 
+    void storetoDB(Map<String, Object> coupon){
+
+
+// Add a new document with a generated ID
+        db.collection("coupons")
+                .add(coupon)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("bc", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("bc", "Error adding document", e);
+                    }
+                });
+    }
 
 
 
