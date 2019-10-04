@@ -33,11 +33,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -270,47 +274,79 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 btnResult.setAlpha(0.5f);
                 btnResult.setEnabled(false);
-                if (score >= 3){
-                    final Dialog dialogQr = new Dialog(GameActivity.this);
-                    dialogQr.setContentView(R.layout.layout_qr_code);
-                    ImageView imgBarcode = dialogQr.findViewById(R.id.imgQrCode);
 
-                    JSONObject embeddedObj = new JSONObject();
-                    try {
+                db.collection("coupons")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    int c=0;
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Map<String, Object> coupon=document.getData();
+                                        if(coupon.get("userId").equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                                          c++;
+                                        }
 
-                       // embeddedObj.put("code", UUID.randomUUID().toString());
-                        String couponId=UUID.randomUUID().toString();
-                        embeddedObj.put("couponId",couponId );
-                        embeddedObj.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        embeddedObj.put("used","0");
+                                    }
 
-                    // Whatever you need to encode in the QR code
-                        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+                                    if(c<6){
+                                        if (score >= 3){
+                                            final Dialog dialogQr = new Dialog(GameActivity.this);
+                                            dialogQr.setContentView(R.layout.layout_qr_code);
+                                            ImageView imgBarcode = dialogQr.findViewById(R.id.imgQrCode);
 
-                        BitMatrix bitMatrix = multiFormatWriter.encode(embeddedObj.toString(), BarcodeFormat.QR_CODE, 200, 200);
-                        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                        Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                        imgBarcode.setImageBitmap(bitmap);
-                        coupon = new HashMap<>();
-                        coupon.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        coupon.put("couponId",couponId);
-                        coupon.put("used","0");
+                                            JSONObject embeddedObj = new JSONObject();
+                                            try {
 
-                    } catch (WriterException e) {
-                        e.printStackTrace();
-                    }catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                                                // embeddedObj.put("code", UUID.randomUUID().toString());
+                                                String couponId=UUID.randomUUID().toString();
+                                                embeddedObj.put("couponId",couponId );
+                                                embeddedObj.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                                embeddedObj.put("used","0");
 
-                    dialogQr.show();
-                    storetoDB(coupon);
+                                                // Whatever you need to encode in the QR code
+                                                MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"Better Luck Next time",Toast.LENGTH_LONG).show();
-                    finish();
+                                                BitMatrix bitMatrix = multiFormatWriter.encode(embeddedObj.toString(), BarcodeFormat.QR_CODE, 200, 200);
+                                                BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                                                Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+                                                imgBarcode.setImageBitmap(bitmap);
+                                                coupon = new HashMap<>();
+                                                coupon.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                                coupon.put("couponId",couponId);
+                                                coupon.put("used","0");
 
-                }
+                                            } catch (WriterException e) {
+                                                e.printStackTrace();
+                                            }catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+
+                                            dialogQr.show();
+                                            storetoDB(coupon);
+
+                                        }
+                                        else{
+                                            Toast.makeText(getApplicationContext(),"Better Luck Next time",Toast.LENGTH_LONG).show();
+                                            finish();
+
+                                        }
+                                    }
+                                    else{
+                                        Toast.makeText(getApplicationContext(),"Maximum coupon limit reached", Toast.LENGTH_LONG).show();
+                                    }
+
+
+
+                                } else {
+                                    Log.w("bhenchod", "Error getting documents.", task.getException());
+                                }
+                            }
+                        });
+
+
+
             }
         });
 
@@ -425,6 +461,24 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Progress will be lost");
+        builder.setMessage("Are you sure you want to go back?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                GameActivity.super.onBackPressed();
+
+            }
+        });
+        builder.setNegativeButton("No",null);
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+
+    }
 
 
 
