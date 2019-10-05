@@ -17,14 +17,16 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         getSupportActionBar().setTitle("Result");
-        
+
 
         ArrayList<ModelResult> listImages = (ArrayList<ModelResult>)getIntent().getSerializableExtra("list");
 
         RecyclerView recyclerView = findViewById(R.id.rvImages);
         ResultAdapter resultAdapter = new ResultAdapter(this,listImages);
         resultAdapter.notifyDataSetChanged();
+
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
+        recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView,new RecyclerView.State(),5);
         recyclerView.setAdapter(resultAdapter);
     }
 }
