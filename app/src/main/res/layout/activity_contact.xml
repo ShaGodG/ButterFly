@@ -93,19 +93,19 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:layout_gravity="bottom|left"
-                android:src="@drawable/fblogo" />
+                android:src="@drawable/ic_facebook" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iglogo"
-                android:layout_width="20dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="120dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:layout_gravity="bottom"
-                android:src="@drawable/iglogo" />
+                android:src="@drawable/ic_instagram" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/twitterlogo"
@@ -116,7 +116,8 @@
                 android:layout_gravity="bottom|end|right"
                 android:clickable="true"
                 android:focusable="true"
-                android:src="@drawable/twtrlogo" />
+                android:background="@android:color/white"
+                android:src="@drawable/ic_twitter" />
 
 
         </LinearLayout>
