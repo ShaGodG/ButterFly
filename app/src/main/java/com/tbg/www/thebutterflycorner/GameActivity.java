@@ -99,9 +99,14 @@ public class GameActivity extends AppCompatActivity {
 
     ArrayList<ModelCompare>my_list;
 
+    String statusImage="";
+    int imageResult;
+
+   ArrayList<ModelResult> allImagePaths;
+
     private TextView txtDescription;
     private ImageView imgPreview;
-    RequestQueue requestQueue;;
+    RequestQueue requestQueue;
     String result;
 
     private TextView scoreTextView;
@@ -170,6 +175,7 @@ public class GameActivity extends AppCompatActivity {
             // will close the app if the device doesn't have camera
             finish();
         }
+        allImagePaths=new ArrayList<>();
         txtDescription = findViewById(R.id.txt_descs);
         imgPreview = findViewById(R.id.imgPreviews);
         btnReset=findViewById(R.id.btnReset);
@@ -274,6 +280,10 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 btnResult.setAlpha(0.5f);
                 btnResult.setEnabled(false);
+
+                Intent i = new Intent(GameActivity.this,ResultActivity.class);
+                i.putExtra("list",allImagePaths);
+                startActivity(i);
 
                 db.collection("coupons")
                         .get()
@@ -421,6 +431,7 @@ public class GameActivity extends AppCompatActivity {
         if (file != null) {
             imageStoragePath = file.getAbsolutePath();
         }
+        Log.v("ImagePath",imageStoragePath);
 
         Uri fileUri = CameraUtils.getOutputMediaFileUri(getApplicationContext(), file);
 
@@ -429,6 +440,11 @@ public class GameActivity extends AppCompatActivity {
         // start the image capture Intent
         startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }
+    public void updateResult(String inputText,int imageResultfrom){
+
+        allImagePaths.add(new ModelResult(imageStoragePath,inputText,imageResultfrom));
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -620,6 +636,8 @@ public class GameActivity extends AppCompatActivity {
 
 
     }
+
+
 }
 
 

@@ -35,9 +35,7 @@ public class ButterflyFragment extends DialogFragment {
         ));
 
 
-        gridViewImageId = new ArrayList<>(Arrays.asList( R.drawable.acraea_violae,R.drawable.cethosia_cyane, R.drawable.danaus_chrysippus,
-                R.drawable.graphium_agamemnon, R.drawable.hypolimnas_bolina, R.drawable.pachlioptaaristolochiae,
-                R.drawable.papiliodemoleus, R.drawable.papiliomemnon, R.drawable.parthenossylvia));
+        gridViewImageId = new ArrayList<>(Arrays.asList( R.drawable.acraea_violae,R.drawable.cethosia_cyane, R.drawable.danaus_chrysippus, R.drawable.graphium_agamemnon, R.drawable.hypolimnas_bolina, R.drawable.pachlioptaaristolochiae, R.drawable.papiliodemoleus, R.drawable.papiliomemnon, R.drawable.parthenossylvia));
         DialogGridAdapter dialogGridAdapter = new DialogGridAdapter(getContext(),gridViewString,gridViewImageId);
         gridView.setAdapter(dialogGridAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -48,13 +46,15 @@ public class ButterflyFragment extends DialogFragment {
                 String gameActivityRes = args.getString("name","name");
                 String removeQuotes =gameActivityRes.replaceAll("^\"+|\"+$", "");
                 String gridViewStrinRes = gridViewString.get(position);
+                //gameActivity.getAllImagePaths().get(position).setImage(gridViewImageId.get(position));
 
                 if(gridViewStrinRes.equals(removeQuotes)){
-
+                    gameActivity.updateResult("CORRECT",gridViewImageId.get(position));
                     Toast.makeText(getContext(), "Correct match.You are doing great, keep going...", Toast.LENGTH_SHORT).show();
+                    //gameActivity.getAllImagePaths().get(position).setStatus("CORRECT");
                     gameActivity.score++;
                 }else{
-
+                    gameActivity.updateResult("WRONG",gridViewImageId.get(position));
                     Toast.makeText(getContext(), "Wrong match, You need to improve...", Toast.LENGTH_SHORT).show();
                 }
                 gameActivity.counter++;
@@ -68,4 +68,6 @@ public class ButterflyFragment extends DialogFragment {
 
 
     }
+
+
 }
