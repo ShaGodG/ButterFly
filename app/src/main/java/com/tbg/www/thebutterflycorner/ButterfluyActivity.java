@@ -1,14 +1,20 @@
 package com.tbg.www.thebutterflycorner;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -89,12 +95,13 @@ public class ButterfluyActivity extends AppCompatActivity {
 
         TextView dialogName= dialog.findViewById(R.id.dialog_name);
         TextView dialogDesc =dialog.findViewById(R.id.textviewDesc);
-        ImageView imgDesc= dialog.findViewById(R.id.dialog_icon);
+        final ImageView imgDesc= dialog.findViewById(R.id.dialog_icon);
         TextView tvSpecificName = dialog.findViewById(R.id.tvSpecificName);
         TextView rankInput = dialog.findViewById(R.id.rankInput);
         TextView familyInput = dialog.findViewById(R.id.familyInput);
         TextView orderInput = dialog.findViewById(R.id.orderInput);
         ImageView dialogIcon = dialog.findViewById(R.id.dialog_icon);
+        ImageView dialogShare =dialog.findViewById(R.id.shareButton);
 
         dialogName.setText(gridViewString.get(i));
         dialogDesc.setText(gridViewStringDesc.get(i));
@@ -103,6 +110,26 @@ public class ButterfluyActivity extends AppCompatActivity {
         rankInput.setText(dialogRank.get(i));
         familyInput.setText(dialogFamily.get(i));
         orderInput.setText(dialogOrder.get(i));
+        
+        dialogShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BitmapDrawable bitmapDrawable;
+                Bitmap bitmap1;
+//write this code in your share button or function
+
+                bitmapDrawable = (BitmapDrawable) imgDesc.getDrawable();// get the from imageview or use your drawable from drawable folder
+                bitmap1 = bitmapDrawable.getBitmap();
+                String imgBitmapPath= MediaStore.Images.Media.insertImage(getContentResolver(),bitmap1,"The Butterfly Corner",null);
+                Uri imgBitmapUri=Uri.parse(imgBitmapPath);
+                String shareText="*"+gridViewString.get(i)+"*"+"\n"+gridViewStringDesc.get(i);
+                Intent shareIntent=new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("*/*");
+                shareIntent.putExtra(Intent.EXTRA_STREAM,imgBitmapUri);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+                startActivity(Intent.createChooser(shareIntent,"Share using"));
+            }
+        });
 
 
 
