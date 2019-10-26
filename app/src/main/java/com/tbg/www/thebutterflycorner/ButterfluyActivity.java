@@ -164,68 +164,68 @@ public class ButterfluyActivity extends AppCompatActivity {
         switch (i){
 
             case 0:
-                imgView1.setImageResource(R.drawable.acraea_violae);
-                imgView2.setImageResource(R.drawable.acraea_violae);
-                imgView3.setImageResource(R.drawable.acraea_violae);
-                imgView4.setImageResource(R.drawable.acraea_violae);
+                imgView1.setImageResource(R.drawable.av1);
+                imgView2.setImageResource(R.drawable.av2);
+                imgView3.setImageResource(R.drawable.av3);
+                imgView4.setImageResource(R.drawable.av4);
 
                 break;
             case 1:
 
-                imgView1.setImageResource(R.drawable.cethosia_cyane);
-                imgView2.setImageResource(R.drawable.cethosia_cyane);
-                imgView3.setImageResource(R.drawable.cethosia_cyane);
-                imgView4.setImageResource(R.drawable.cethosia_cyane);
+                imgView1.setImageResource(R.drawable.cc1);
+                imgView2.setImageResource(R.drawable.cc2);
+                imgView3.setImageResource(R.drawable.cc3);
+                imgView4.setImageResource(R.drawable.cc4);
                 break;
             case 2:
 
-                imgView1.setImageResource(R.drawable.danaus_chrysippus);
-                imgView2.setImageResource(R.drawable.danaus_chrysippus);
-                imgView3.setImageResource(R.drawable.danaus_chrysippus);
-                imgView4.setImageResource(R.drawable.danaus_chrysippus);
+                imgView1.setImageResource(R.drawable.dc1);
+                imgView2.setImageResource(R.drawable.dc2);
+                imgView3.setImageResource(R.drawable.dc3);
+                imgView4.setImageResource(R.drawable.dc4);
                 break;
             case 3:
 
-                imgView1.setImageResource(R.drawable.graphium_agamemnon);
-                imgView2.setImageResource(R.drawable.graphium_agamemnon);
-                imgView3.setImageResource(R.drawable.graphium_agamemnon);
-                imgView4.setImageResource(R.drawable.graphium_agamemnon);
+                imgView1.setImageResource(R.drawable.ga1);
+                imgView2.setImageResource(R.drawable.ga2);
+                imgView3.setImageResource(R.drawable.ga3);
+                imgView4.setImageResource(R.drawable.ga4);
                 break;
 
             case 4:
 
-                imgView1.setImageResource(R.drawable.hypolimnas_bolina);
-                imgView2.setImageResource(R.drawable.hypolimnas_bolina);
-                imgView3.setImageResource(R.drawable.hypolimnas_bolina);
-                imgView4.setImageResource(R.drawable.hypolimnas_bolina);
+                imgView1.setImageResource(R.drawable.hb1);
+                imgView2.setImageResource(R.drawable.hb2);
+                imgView3.setImageResource(R.drawable.hb3);
+                imgView4.setImageResource(R.drawable.hb4);
                 break;
             case 5:
 
-                imgView1.setImageResource(R.drawable.pachlioptaaristolochiae);
-                imgView2.setImageResource(R.drawable.pachlioptaaristolochiae);
-                imgView3.setImageResource(R.drawable.pachlioptaaristolochiae);
-                imgView4.setImageResource(R.drawable.pachlioptaaristolochiae);
+                imgView1.setImageResource(R.drawable.pa1);
+                imgView2.setImageResource(R.drawable.pa2);
+                imgView3.setImageResource(R.drawable.pa3);
+                imgView4.setImageResource(R.drawable.pa4);
                 break;
             case 6:
 
-                imgView1.setImageResource(R.drawable.papiliodemoleus);
-                imgView2.setImageResource(R.drawable.papiliodemoleus);
-                imgView3.setImageResource(R.drawable.papiliodemoleus);
-                imgView4.setImageResource(R.drawable.papiliodemoleus);
+                imgView1.setImageResource(R.drawable.pd1);
+                imgView2.setImageResource(R.drawable.pd2);
+                imgView3.setImageResource(R.drawable.pd3);
+                imgView4.setImageResource(R.drawable.pd4);
                 break;
             case 7:
 
-                imgView1.setImageResource(R.drawable.papiliomemnon);
-                imgView2.setImageResource(R.drawable.papiliomemnon);
-                imgView3.setImageResource(R.drawable.papiliomemnon);
-                imgView4.setImageResource(R.drawable.papiliomemnon);
+                imgView1.setImageResource(R.drawable.pm1);
+                imgView2.setImageResource(R.drawable.pm2);
+                imgView3.setImageResource(R.drawable.pm3);
+                imgView4.setImageResource(R.drawable.pm4);
                 break;
             case 8:
 
-                imgView1.setImageResource(R.drawable.parthenossylvia);
-                imgView2.setImageResource(R.drawable.parthenossylvia);
-                imgView3.setImageResource(R.drawable.parthenossylvia);
-                imgView4.setImageResource(R.drawable.parthenossylvia);
+                imgView1.setImageResource(R.drawable.ps1);
+                imgView2.setImageResource(R.drawable.ps2);
+                imgView3.setImageResource(R.drawable.ps3);
+                imgView4.setImageResource(R.drawable.ps4);
                 break;
 
         }
