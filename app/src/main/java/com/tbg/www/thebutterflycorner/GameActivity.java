@@ -37,6 +37,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -128,6 +129,8 @@ public class GameActivity extends AppCompatActivity {
     FirebaseFirestore db;
     Map<String, Object> coupon;
 
+    FloatingActionButton help;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -166,6 +169,8 @@ public class GameActivity extends AppCompatActivity {
         fm = getSupportFragmentManager();
         db = FirebaseFirestore.getInstance();
 
+        help = findViewById(R.id.helpbtn);
+
         butterflyFragment= new ButterflyFragment();
         // Checking availability of the camera
         if (!CameraUtils.isDeviceSupportCamera(getApplicationContext())) {
@@ -199,6 +204,15 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     requestCameraPermission(MEDIA_TYPE_IMAGE);
                 }
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(GameActivity.this,HelpActivity.class);
+                startActivity(i);
+
             }
         });
         btnReset.setOnClickListener(new View.OnClickListener() {
