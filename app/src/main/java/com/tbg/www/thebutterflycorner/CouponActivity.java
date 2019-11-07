@@ -192,7 +192,7 @@ public class CouponActivity extends AppCompatActivity {
 
                         embeddedObj.put("couponId", code);
                         embeddedObj.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
-
+                        embeddedObj.put("userEmail",FirebaseAuth.getInstance().getCurrentUser().getEmail());
                         // Whatever you need to encode in the QR code
                         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 

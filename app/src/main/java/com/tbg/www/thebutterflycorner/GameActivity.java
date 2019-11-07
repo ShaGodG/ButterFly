@@ -169,7 +169,7 @@ public class GameActivity extends AppCompatActivity {
         fm = getSupportFragmentManager();
         db = FirebaseFirestore.getInstance();
 
-        help = findViewById(R.id.helpbtn);
+//        help = findViewById(R.id.helpbtn);
 
         butterflyFragment= new ButterflyFragment();
         // Checking availability of the camera
@@ -207,14 +207,14 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(GameActivity.this,HelpActivity.class);
-                startActivity(i);
-
-            }
-        });
+//        help.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(GameActivity.this,HelpActivity.class);
+//                startActivity(i);
+//
+//            }
+//        });
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -328,6 +328,7 @@ public class GameActivity extends AppCompatActivity {
                                                 embeddedObj.put("couponId",couponId );
                                                 embeddedObj.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                                 embeddedObj.put("used","0");
+                                                embeddedObj.put("userEmail",FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
                                                 // Whatever you need to encode in the QR code
                                                 MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
