@@ -18,7 +18,7 @@
     <string name="title_activity_number_of_players">Number Of Players</string>
     <string name="title_activity_itempage">Menu</string>
     <string name="title_activity_capture_butterfly">Capture Butterfly</string>
-    <string name="preview_description">Image preview will appear here</string>
+    <string name="preview_description">How to play\nCapture butterfly images using the capture button\nCompare them with the choice of butterfly you believe it to be\nrepeat the process 5 times\nIf you get them correct, you might get a coupon to be used at our TBC Coffee Shop\n\nAvoid Blur images\nUse the reset button to reset images\nUse the coupon button to check if you won the coupon\n\nYou can check the number of images captured and compared in the score box below</string>
     <string name="btn_take_picture">Take Picture</string>
     <string name="btn_confirm_picture">Confirm Picture</string>
     <string name="coupon_text">Coupon Description will appear here</string>
