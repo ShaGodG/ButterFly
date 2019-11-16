@@ -14,19 +14,41 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/activity_margin"
         android:layout_weight="1"
+        android:weightSum="2"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txt_descs"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="@string/preview_description"
-            android:textSize="15dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <!-- To display picture taken -->
+
+            <TextView
+                android:id="@+id/txt_descs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:text="How to Play"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/txt_descs1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="1. Capture butterfly images using the capture button\n2. Compare them with the choice of butterfly you believe it to be\n3. Repeat the process 5 times\n4. If you get them correct, you might get a coupon to be used at our TBC Coffee Shop\n5. Avoid Blur images\n6. Use the reset button to reset images\n7. Use the coupon button to check if you won the coupon\n8. You can check the number of images captured and compared in the score box below"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+
+
+<!-- To display picture taken -->
         <ImageView
+            android:layout_weight="1"
             android:id="@+id/imgPreviews"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

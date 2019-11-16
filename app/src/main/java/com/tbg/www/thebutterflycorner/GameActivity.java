@@ -216,19 +216,51 @@ public class GameActivity extends AppCompatActivity {
 //            }
 //        });
         btnReset.setOnClickListener(new View.OnClickListener() {
+
+
+
             @Override
             public void onClick(View v) {
-                imgPreview.setImageDrawable(null);
-                counter = 0;
-                score=0;
-                String text=counter+"/ 5";
-                scoreTextView.setText( text);
-                btnCompare.setAlpha(.5f);
-                btnCompare.setEnabled(false);
-                btnResult.setAlpha(.5f);
-                btnResult.setEnabled(false);
-                btnCapturePicture.setAlpha(1f);
-                btnCapturePicture.setEnabled(true);
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+
+                builder.setTitle("Progress will be lost");
+
+                //Setting message manually and performing action on button click
+                builder.setMessage("Are you sure, you want to reset the progress?");
+                //This will not allow to close dialogbox until user selects an option
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        imgPreview.setImageDrawable(null);
+                        counter = 0;
+                        score=0;
+                        String text=counter+"/ 5";
+                        scoreTextView.setText( text);
+                        btnCompare.setAlpha(.5f);
+                        btnCompare.setEnabled(false);
+                        btnResult.setAlpha(.5f);
+                        btnResult.setEnabled(false);
+                        btnCapturePicture.setAlpha(1f);
+                        btnCapturePicture.setEnabled(true);
+
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //  Action for 'NO' Button
+
+                        dialog.cancel();
+                    }
+                });
+
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                //alert.setTitle("AlertDialogExample");
+                alert.show();
+
 
             }
         });
