@@ -13,51 +13,23 @@
     <LinearLayout
         android:orientation="vertical"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imgView1"
                 android:layout_width="150dp"
                 android:layout_margin="5dp"
-                android:src="@drawable/butterflydb"
-                android:layout_height="130dp"/>
-            <ImageView
-                android:id="@+id/imgView2"
-                android:layout_margin="5dp"
-                android:src="@drawable/butterflydb"
-                android:layout_width="150dp"
+                android:src="@drawable/ic_butterfly"
                 android:layout_height="130dp"/>
 
 
         </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/imgView3"
-                android:layout_width="150dp"
-                android:src="@drawable/butterflydb"
-                android:layout_margin="5dp"
-                android:layout_height="130dp"/>
-            <ImageView
-                android:id="@+id/imgView4"
-                android:layout_width="150dp"
-                android:layout_margin="5dp"
-                android:src="@drawable/butterflydb"
-                android:layout_height="130dp"/>
-
-
-        </LinearLayout>
-
     </LinearLayout>
 
 

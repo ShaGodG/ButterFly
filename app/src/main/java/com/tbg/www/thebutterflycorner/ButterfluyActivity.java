@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -44,9 +43,9 @@ public class ButterfluyActivity extends AppCompatActivity {
         ));
         getSupportActionBar().setTitle("Butterflies");
 
-        gridViewImageId = new ArrayList<>(Arrays.asList( R.drawable.acraea_violae,R.drawable.cethosia_cyane, R.drawable.danaus_chrysippus,
-                R.drawable.graphium_agamemnon, R.drawable.hypolimnas_bolina, R.drawable.pachlioptaaristolochiae,
-                R.drawable.papiliodemoleus, R.drawable.papiliomemnon, R.drawable.parthenossylvia));
+        gridViewImageId = new ArrayList<>(Arrays.asList( R.drawable.av1,R.drawable.cc1, R.drawable.dc1,
+                R.drawable.ga1, R.drawable.hb1, R.drawable.pa1,
+                R.drawable.pd1, R.drawable.pm1, R.drawable.ps1));
 
        gridViewStringDesc =new ArrayList<>(Arrays.asList(
                "Acraea Violae, the tawny coster, is a small, 53–64 millimetres, leathery-winged butterfly common in grassland and scrub habitats. It belongs to the Nymphalidae or brush-footed butterfly family. It has a weak fluttery flight. It is avoided by most insect predators.",
@@ -156,76 +155,45 @@ public class ButterfluyActivity extends AppCompatActivity {
         dialogInside.setCanceledOnTouchOutside(true);
         dialogInside.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         ImageView imgView1 = dialogInside.findViewById(R.id.imgView1);
-        ImageView imgView2 = dialogInside.findViewById(R.id.imgView2);
-        ImageView imgView3 = dialogInside.findViewById(R.id.imgView3);
-        ImageView imgView4 = dialogInside.findViewById(R.id.imgView4);
 
 
         switch (i){
 
             case 0:
                 imgView1.setImageResource(R.drawable.av1);
-                imgView2.setImageResource(R.drawable.av2);
-                imgView3.setImageResource(R.drawable.av3);
-                imgView4.setImageResource(R.drawable.av4);
-
                 break;
             case 1:
 
                 imgView1.setImageResource(R.drawable.cc1);
-                imgView2.setImageResource(R.drawable.cc2);
-                imgView3.setImageResource(R.drawable.cc3);
-                imgView4.setImageResource(R.drawable.cc4);
                 break;
             case 2:
 
                 imgView1.setImageResource(R.drawable.dc1);
-                imgView2.setImageResource(R.drawable.dc2);
-                imgView3.setImageResource(R.drawable.dc3);
-                imgView4.setImageResource(R.drawable.dc4);
                 break;
             case 3:
 
                 imgView1.setImageResource(R.drawable.ga1);
-                imgView2.setImageResource(R.drawable.ga2);
-                imgView3.setImageResource(R.drawable.ga3);
-                imgView4.setImageResource(R.drawable.ga4);
                 break;
 
             case 4:
 
                 imgView1.setImageResource(R.drawable.hb1);
-                imgView2.setImageResource(R.drawable.hb2);
-                imgView3.setImageResource(R.drawable.hb3);
-                imgView4.setImageResource(R.drawable.hb4);
                 break;
             case 5:
 
                 imgView1.setImageResource(R.drawable.pa1);
-                imgView2.setImageResource(R.drawable.pa2);
-                imgView3.setImageResource(R.drawable.pa3);
-                imgView4.setImageResource(R.drawable.pa4);
                 break;
             case 6:
 
                 imgView1.setImageResource(R.drawable.pd1);
-                imgView2.setImageResource(R.drawable.pd2);
-                imgView3.setImageResource(R.drawable.pd3);
-                imgView4.setImageResource(R.drawable.pd4);
                 break;
             case 7:
 
                 imgView1.setImageResource(R.drawable.pm1);
-                imgView2.setImageResource(R.drawable.pm2);
-                imgView3.setImageResource(R.drawable.pm3);
-                imgView4.setImageResource(R.drawable.pm4);
                 break;
             case 8:
 
                 imgView1.setImageResource(R.drawable.ps1);
-                imgView2.setImageResource(R.drawable.ps2);
-                imgView3.setImageResource(R.drawable.ps3);
-                imgView4.setImageResource(R.drawable.ps4);
                 break;
 
         }

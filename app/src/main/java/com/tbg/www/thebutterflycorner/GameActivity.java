@@ -20,10 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -54,7 +50,6 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -68,7 +63,10 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import id.zelory.compressor.Compressor;
 
@@ -106,6 +104,7 @@ public class GameActivity extends AppCompatActivity {
    ArrayList<ModelResult> allImagePaths;
 
     private TextView txtDescription;
+    private TextView txtDescription1;
     private ImageView imgPreview;
     RequestQueue requestQueue;
     String result;
@@ -182,6 +181,7 @@ public class GameActivity extends AppCompatActivity {
         }
         allImagePaths=new ArrayList<>();
         txtDescription = findViewById(R.id.txt_descs);
+        txtDescription1 = findViewById(R.id.txt_descs1);
         imgPreview = findViewById(R.id.imgPreviews);
         btnReset=findViewById(R.id.btnReset);
         btnResult=findViewById(R.id.btnResult);
@@ -244,6 +244,8 @@ public class GameActivity extends AppCompatActivity {
                         btnResult.setEnabled(false);
                         btnCapturePicture.setAlpha(1f);
                         btnCapturePicture.setEnabled(true);
+                        txtDescription.setVisibility(View.VISIBLE);
+                        txtDescription1.setVisibility(View.VISIBLE);
 
                     }
                 });
@@ -578,6 +580,7 @@ public class GameActivity extends AppCompatActivity {
         try {
             // hide video preview
             txtDescription.setVisibility(View.GONE);
+            txtDescription1.setVisibility(View.GONE);
             imgPreview.setVisibility(View.VISIBLE);
 
 

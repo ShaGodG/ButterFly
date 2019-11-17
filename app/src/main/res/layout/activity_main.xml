@@ -104,7 +104,7 @@
 
                     <ImageView
                         android:id="@+id/butterflyImg"
-                        android:src="@drawable/butterflydb"
+                        android:src="@drawable/ic_butterfly"
                         android:layout_width="80dp"
                         android:layout_gravity="center"
                         android:layout_height="80dp"/>
@@ -145,7 +145,7 @@
 
                     <ImageView
 
-                        android:src="@drawable/menu"
+                        android:src="@drawable/ic_menu"
                         android:layout_width="80dp"
                         android:layout_gravity="center"
                         android:layout_height="80dp"/>
@@ -185,7 +185,7 @@
 
                     <ImageView
                         android:id="@+id/contactus"
-                        android:src="@drawable/contact"
+                        android:src="@drawable/ic_contact"
                         android:layout_width="80dp"
                         android:layout_gravity="center"
                         android:layout_height="80dp"/>
@@ -225,7 +225,7 @@
 
                     <ImageView
 
-                        android:src="@drawable/coupon"
+                        android:src="@drawable/ic_coupon"
                         android:layout_width="80dp"
                         android:layout_gravity="center"
                         android:layout_height="80dp"/>
@@ -249,6 +249,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/game_button" />
+        app:srcCompat="@drawable/ic_game_controller" />
 
 </LinearLayout>

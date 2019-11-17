@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/play" />
+            app:srcCompat="@drawable/ic_game_controller" />
 
 
     </LinearLayout>
