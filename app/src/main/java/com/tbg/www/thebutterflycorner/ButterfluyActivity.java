@@ -45,7 +45,8 @@ public class ButterfluyActivity extends AppCompatActivity {
 
         gridViewImageId = new ArrayList<>(Arrays.asList( R.drawable.av1,R.drawable.cc1, R.drawable.dc1,
                 R.drawable.ga1, R.drawable.hb1, R.drawable.pa1,
-                R.drawable.pd1, R.drawable.pm1, R.drawable.ps1));
+                R.drawable.pd1, R.drawable.pm1, R.drawable.ps1,
+                R.drawable.lp1,R.drawable.di1,R.drawable.pp1));
 
         
 
@@ -58,17 +59,19 @@ public class ButterfluyActivity extends AppCompatActivity {
                "Pachliopta aristolochiae, the common rose, is a swallowtail butterfly belonging to the genus Pachliopta, the roses, or red-bodied swallowtails. It is a common butterfly which is extensively distributed across south and southeast Asia.",
                "Papilio demoleus is a common and widespread swallowtail butterfly. The butterfly is also known as the lime butterfly, lemon butterfly, lime swallowtail, and chequered swallowtail. These common names refer to their host plants, which are usually citrus species such as the cultivated lime.",
                "Papilio memnon, the great Mormon, is a large butterfly native to southern Asia that belongs to the swallowtail family. It is widely distributed and has thirteen subspecies. The female is polymorphic and with mimetic forms.",
-               "Parthenos sylvia, the clipper, is a species of nymphalid butterfly found in south and southeast Asia, mostly in forested areas. The clipper is a fast-flying butterfly and has a habit of flying with its wings flapping stiffly between the horizontal position and a few degrees below the horizontal."
-
+               "Parthenos sylvia, the clipper, is a species of nymphalid butterfly found in south and southeast Asia, mostly in forested areas. The clipper is a fast-flying butterfly and has a habit of flying with its wings flapping stiffly between the horizontal position and a few degrees below the horizontal.",
+                "Junonia lemonias, the lemon pansy, is a common nymphalid butterfly found in Cambodia and South Asia. It is found in gardens, fallow land, and open wooded areas.",
+               "Dryas iulia, commonly called the Julia butterfly, Julia heliconian, the flame, or flambeau, is a species of brush-footed butterfly. The sole representative of its genus Dryas, it is native from Brazil to southern Texas and Florida, and in summer can sometimes be found as far north as eastern Nebraska.",
+               "Papilio polytes, the common Mormon, is a common species of swallowtail butterfly widely distributed across Asia. This butterfly is known for the mimicry displayed by the numerous forms of its females which mimic inedible red-bodied swallowtails, such as the common rose and the crimson rose."
        ));
 
-        dialogScientificName = new ArrayList<>(Arrays.asList("Acraea terpsicore","Cethosia cyane","Danaus chrysippus","Graphium agamemnon","Hypolimnas bolina","Pachliopta aristolochiae","Papilio demoleus","Papilio memnon","Parthenos sylvia"));
+        dialogScientificName = new ArrayList<>(Arrays.asList("Acraea terpsicore","Cethosia cyane","Danaus chrysippus","Graphium agamemnon","Hypolimnas bolina","Pachliopta aristolochiae","Papilio demoleus","Papilio memnon","Parthenos sylvia","Lemon Pansy","Dryas iulia","Papilio Polytes"));
 
-        dialogRank = new ArrayList<>(Arrays.asList("Species","Species","Species","Species","Species","Species","Species","Species","Species"));
+        dialogRank = new ArrayList<>(Arrays.asList("Species","Species","Species","Species","Species","Species","Species","Species","Species","Species","Species","Species"));
 
-        dialogFamily = new ArrayList<>(Arrays.asList("Nymphalidae","Nymphalidae","Nymphalidae","Papilionidae","Nymphalidae","Papilionidae","Papilionidae","Papilionidae","Nymphalidae"));
+        dialogFamily = new ArrayList<>(Arrays.asList("Nymphalidae","Nymphalidae","Nymphalidae","Papilionidae","Nymphalidae","Papilionidae","Papilionidae","Papilionidae","Nymphalidae","Nymphalidae","Nymphalidae","Papilionidae"));
 
-        dialogOrder = new ArrayList<>(Arrays.asList("Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera"));
+        dialogOrder = new ArrayList<>(Arrays.asList("Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera","Lepidoptera"));
         CustomGridAdapter adapterViewAndroid = new CustomGridAdapter(ButterfluyActivity.this, gridViewString, gridViewImageId,gridViewStringDesc);
         GridView=(GridView)findViewById(R.id.grid_view_image_text);
         GridView.setAdapter(adapterViewAndroid);
@@ -196,6 +199,18 @@ public class ButterfluyActivity extends AppCompatActivity {
             case 8:
 
                 imgView1.setImageResource(R.drawable.ps1);
+                break;
+            case 9:
+
+                imgView1.setImageResource(R.drawable.lp1);
+                break;
+            case 10:
+
+                imgView1.setImageResource(R.drawable.di1);
+                break;
+            case 11:
+
+                imgView1.setImageResource(R.drawable.pp1);
                 break;
 
         }

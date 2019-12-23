@@ -31,11 +31,11 @@ public class ButterflyFragment extends DialogFragment {
         gridView =rootView.findViewById(R.id.gridView);
         getDialog().setTitle("Choose a matching image");
 
-    gridViewString = new ArrayList<>(Arrays.asList("acraea violae","cethosia cyane","danaus chrysippus","graphium agamemnon","hypolimnas bolina","pachliopta aristolochiae","papilio demoleus","papilio memnon","parthenos slyvia"
+    gridViewString = new ArrayList<>(Arrays.asList("acraea violae","cethosia cyane","danaus chrysippus","graphium agamemnon","hypolimnas bolina","pachliopta aristolochiae","papilio demoleus","papilio memnon","parthenos slyvia","lemon pansy","dryas iulia","papilio polytes"
         ));
 
 
-        gridViewImageId = new ArrayList<>(Arrays.asList( R.drawable.av1,R.drawable.cc1, R.drawable.dc1, R.drawable.ga1, R.drawable.hb1, R.drawable.pa1, R.drawable.pd1, R.drawable.pm1, R.drawable.ps1));
+        gridViewImageId = new ArrayList<>(Arrays.asList( R.drawable.av1,R.drawable.cc1, R.drawable.dc1, R.drawable.ga1, R.drawable.hb1, R.drawable.pa1, R.drawable.pd1, R.drawable.pm1, R.drawable.ps1, R.drawable.lp1, R.drawable.di1, R.drawable.pp1));
         DialogGridAdapter dialogGridAdapter = new DialogGridAdapter(getContext(),gridViewString,gridViewImageId);
         gridView.setAdapter(dialogGridAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
