@@ -47,6 +47,8 @@ public class ButterfluyActivity extends AppCompatActivity {
                 R.drawable.ga1, R.drawable.hb1, R.drawable.pa1,
                 R.drawable.pd1, R.drawable.pm1, R.drawable.ps1));
 
+        
+
        gridViewStringDesc =new ArrayList<>(Arrays.asList(
                "Acraea Violae, the tawny coster, is a small, 53–64 millimetres, leathery-winged butterfly common in grassland and scrub habitats. It belongs to the Nymphalidae or brush-footed butterfly family. It has a weak fluttery flight. It is avoided by most insect predators.",
                "Cethosia cyane, the leopard lacewing, is a species of heliconiine butterfly found from India to southern China, and Indochina. Its range has expanded in the last few decades, and its arrival in the southern part of the Malay Peninsula, including Singapore, is relatively recent.",
