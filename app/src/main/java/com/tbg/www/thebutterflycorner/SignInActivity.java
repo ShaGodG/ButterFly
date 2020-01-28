@@ -70,7 +70,7 @@ public class SignInActivity extends AppCompatActivity {
                 startActivity(intent);
                 // ..
                 finish();
-                //Log.i("HereSucessfull","bc");
+                //Log.i("HereSucessfull","ss");
             } else {
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check

@@ -64,25 +64,7 @@ public class CustomGridAdapter extends BaseAdapter {
             ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.android_gridview_image);
             textViewAndroid.setText(gridViewString.get(i));
             imageViewAndroid.setImageResource(gridViewImageId.get(i));
-           /* ll.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    myDialog = new Dialog(mContext);
-
-
-
-                    TextView  dialogName= v.findViewById(R.id.dialog_name);
-                    TextView dialogDesc =v.findViewById(R.id.textviewDesc);
-                    ImageView imgDesc= v.findViewById(R.id.dialog_icon);
-
-                    dialogName.setText(gridViewString[i]);
-                    dialogDesc.setText(gridDesc[i]);
-                    imgDesc.setImageResource(gridViewImageId[i]);
-
-
-                }
-            });*/
         } else {
             gridViewAndroid = (View) convertView;
         }

@@ -32,11 +32,9 @@
         <activity android:name=".ContactActivity" />
         <activity android:name=".CouponActivity" />
         <activity android:name=".ShareActivity" />
-        <activity android:name=".MenuActivity" />
         <activity android:name=".GameActivity" />
         <activity android:name=".ButterfluyActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".HelpActivity"></activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAWNDycLjhOoXec18EuN6rW7vkzqGpbpjQ" />

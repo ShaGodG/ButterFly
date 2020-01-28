@@ -122,7 +122,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/menuBtn"
+                android:id="@+id/playbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -145,7 +145,7 @@
 
                     <ImageView
 
-                        android:src="@drawable/ic_menu"
+                        android:src="@drawable/ic_game_controller"
                         android:layout_width="80dp"
                         android:layout_gravity="center"
                         android:layout_height="80dp"/>
@@ -154,7 +154,7 @@
                         android:textColor="#6F6F6F"
                         android:textSize="18sp"
                         android:gravity="center"
-                        android:text="@string/menu"
+                        android:text="Play"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"/>
 
@@ -243,12 +243,5 @@
         </GridLayout>
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/playbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_game_controller" />
 
 </LinearLayout>

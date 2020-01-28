@@ -19,7 +19,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     Animation fromBottom;
     TextView textView1,textView2;
-    FloatingActionButton Play;
 
     private static final int RC_SIGN_IN = 123;
     @Override
@@ -32,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         CardView Butterfly = findViewById(R.id.butterflydb);
-        Play = findViewById(R.id.playbtn);
-        CardView menu = findViewById(R.id.menuBtn);
+        CardView Play = findViewById(R.id.playbtn);
         textView1=findViewById(R.id.text);
         textView2=findViewById(R.id.textViewGame);
 
@@ -44,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         //textView2.animate().translationY(50).setDuration(800).setStartDelay(300);
         Butterfly.setAnimation(fromBottom);
         Play.setAnimation(fromBottom);
-        menu.setAnimation(fromBottom);
         couponBtn.setAnimation(fromBottom);
         contactUs.setAnimation(fromBottom);
 
@@ -65,13 +62,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,MenuActivity.class);
-                startActivity(i);
-            }
-        });
 
         couponBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,49 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        /*SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createSignInIntent();
-            }
-        });*/
+
     }
-    /*public void createSignInIntent() {
-        // [START auth_fui_create_intent]
-        // Choose authentication providers
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.PhoneBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build());
-        //new AuthUI.IdpConfig.FacebookBuilder().build(),
-        // new AuthUI.IdpConfig.TwitterBuilder().build());
-
-        // Create and launch sign-in intent
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(providers)
-                        .build(),
-                RC_SIGN_IN);
-        // [END auth_fui_create_intent]
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-
-            if (resultCode == RESULT_OK) {
-                // Successfully signed in
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                // ...
-            } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
-            }
-        }
-    }*/
 }

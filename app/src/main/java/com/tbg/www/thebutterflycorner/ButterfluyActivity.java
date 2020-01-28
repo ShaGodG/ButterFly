@@ -39,7 +39,9 @@ public class ButterfluyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_butterfluy);
-        gridViewString = new ArrayList<>(Arrays.asList("Acraea Violae","Cethosia Cyane","Danaus Chrysippus","Graphium Agamemnon","Hypolimnas Bolina","Pachiliopta Aristolochiae","Papilio Demoleus","Papilio Memnon","Parthenos Slyvia"
+        gridViewString = new ArrayList<>(Arrays.asList("Acraea Violae","Cethosia Cyane","Danaus Chrysippus",
+                "Graphium Agamemnon","Hypolimnas Bolina","Pachiliopta Aristolochiae",
+                "Papilio Demoleus","Papilio Memnon","Parthenos Slyvia","Lemon Pansy","Dryas iulia","Papilio Polytes"
         ));
         getSupportActionBar().setTitle("Butterflies");
 

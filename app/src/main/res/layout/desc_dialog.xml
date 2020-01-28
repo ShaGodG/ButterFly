@@ -50,7 +50,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:fontFamily="cursive"
                 android:padding="20dp"
                 android:id="@+id/textviewDesc"
                 android:text="@string/cethosia_cyane_the_leopard_lacewing_is_a_species_of_heliconiine_butterfly_found_from_india_to_southern_china_and_indochina_its_range_has_expanded_in_the_last_few_decades_and_its_arrival_in_the_southern_part_of_the_malay_peninsula_including_singapore_is_relatively_recent"
